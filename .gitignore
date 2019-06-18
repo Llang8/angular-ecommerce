@@ -43,7 +43,7 @@ testem.log
 
 # Ignore Flask config and env
 /backend/config.py
-/backend/store-env/*
+/backend/store-env
 /backend/config.pyc
 # System Files
 .DS_Store
