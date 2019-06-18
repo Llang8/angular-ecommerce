@@ -41,6 +41,10 @@ yarn-error.log
 testem.log
 /typings
 
+# Ignore Flask config and env
+./backend/config.py
+./backend/store-env/*
+
 # System Files
 .DS_Store
 Thumbs.db
