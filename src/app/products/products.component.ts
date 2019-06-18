@@ -23,6 +23,7 @@ export class ProductsComponent implements OnInit {
       price: 255
     },
     {
+      id: 2,
       title: 'Gaming Keyboard 2',
       category: 'Keyboards',
       thumbnail: 'https://assets.pcmag.com/media/images/484033-corsair-strafe-mechanical-gaming-keyboard.jpg?thumb=y&width=333&height=246',
@@ -32,6 +33,7 @@ export class ProductsComponent implements OnInit {
       price: 100
     },
     {
+      id: 3,
       title: 'Gaming Keyboard 3',
       category: 'Keyboards',
       thumbnail: 'https://assets.pcmag.com/media/images/484033-corsair-strafe-mechanical-gaming-keyboard.jpg?thumb=y&width=333&height=246',
@@ -41,6 +43,7 @@ export class ProductsComponent implements OnInit {
       price: 144
     },
     {
+      id: 4,
       title: 'Gaming Mouse 1',
       category: 'Mice',
       thumbnail: 'https://images-na.ssl-images-amazon.com/images/I/61d9C4yCB2L._SX466_.jpg',
@@ -50,6 +53,7 @@ export class ProductsComponent implements OnInit {
       price: 100
     },
     {
+      id: 5,
       title: 'Gaming Mouse 2',
       category: 'Mice',
       thumbnail: 'https://images-na.ssl-images-amazon.com/images/I/61d9C4yCB2L._SX466_.jpg',
@@ -59,6 +63,7 @@ export class ProductsComponent implements OnInit {
       price: 110
     },
     {
+      id: 6,
       title: 'Gaming Mouse 3',
       category: 'Mice',
       thumbnail: 'https://images-na.ssl-images-amazon.com/images/I/61d9C4yCB2L._SX466_.jpg',

@@ -1,3 +1,32 @@
-<p>
-  product-spotlight works!
-</p>
+<div class="product-wrapper">
+  <div class="product-top">
+    <div class="product-images">
+      <img src="{{ product.thumbnail }}" alt="Thumbnail">
+    </div>
+    <div class="product-info">
+      <h1>{{ product.title }}</h1>
+      <h3>${{product.price}}</h3>
+      <hr>
+      <p>Quantity</p>
+      <div class="quantity-wrapper">
+        <div class="subtract-quantity" (click)="addQuantity(-1)">
+          <p>-</p>
+        </div>
+        <div class="qunatity-count">
+          <p>{{ quantity }}</p>
+        </div>
+        <div class="add-quantity" (click)="addQuantity(1)">
+          <p>+</p>
+        </div>
+      </div>
+      <button (click)="addToCart()">ADD TO CART</button>
+      <button (click)="checkout()">ADD & CHECKOUT</button>
+    </div>
+  </div>
+  <hr>
+  <div class="product-description">
+    <h1>Description</h1>
+    <p>{{ product.description }}</p>
+  </div>
+  <hr>
+</div>

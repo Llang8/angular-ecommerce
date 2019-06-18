@@ -15,7 +15,7 @@ const routes: Routes = [
     component: ProductsComponent
   },
   {
-    path: 'product-spotlight/:id',
+    path: 'product/:id',
     component: ProductSpotlightComponent
   },
   {
