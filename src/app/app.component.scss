@@ -1,0 +1,88 @@
+header {
+    height: 100px;
+    background: rgb(50,50,50);
+    border-bottom: 1px solid rgb(100,100,100);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 25px;
+
+    .header-controls {
+        i {
+            color: white;
+            font-size: 36px;
+            margin-right: 20px;
+            cursor: pointer;
+            transition: all .2s ease;
+        }
+        i:hover {
+            color: rgb(200,200,200);
+            transform: scale(1.1);
+        }
+    }
+}
+
+nav {
+    z-index: 20;
+    background: rgb(50,50,50);
+    height: 50px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 25px;
+    box-shadow: 0px 5px 5px rgba(50,50,50,.3);
+
+    a {
+        display: inline-block; /* Need to set to inline block so that transform scale works */
+        color:white;
+        text-decoration: none; 
+        margin-right: 25px;
+        transform: all .2s ease;
+    }
+
+    a:hover {
+        transform: scale(1.1);
+        color: rgb(200,200,200)
+    }
+
+}
+
+footer {
+    color: white;
+    bottom: 0;
+    height: 300px;
+    width: calc(100vw - 50px);
+    background: rgb(50,50,50);
+    display: flex;
+    padding: 25px;
+    position: absolute;
+    bottom: 0;
+
+    * {
+        width: 50%;
+        min-width: 200px;
+    }
+
+    h1 {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+        color: rgb(200,200,200);
+        cursor: pointer;
+        transition: all .2s ease;
+        margin-bottom: 10px;
+
+        &:hover {
+            color: rgb(248, 245, 245);
+        }
+    }
+}

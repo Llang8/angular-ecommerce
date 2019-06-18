@@ -1,0 +1,26 @@
+<div class="product-header">
+  <h1>PRODUCTS</h1>
+  <div class="controls">
+    <input type="text" (change)="search($event.target.value)" placeholder="Search keywords">
+    <!-- Hidden submit button so form submits on enter press -->
+    <div class="control-item">
+      <h3>Sort</h3>
+      <select name="sort" id="sort" (change)="sortProducts($event.target.value)">
+        <option value="featured">Featured</option>
+        <option value="best-selling">Best Selling</option>
+        <option value="alphabetically_AZ">Alphabetically (A-Z)</option>
+        <option value="alphabetically_ZA">Alphabetically (Z-A)</option>
+        <option value="price_lowhigh">Price (Low-High)</option>
+        <option value="price_highlow">Price (High-Low)</option>
+      </select>
+    </div>
+  </div>
+</div> 
+<div class="product-grid">
+  <div class="product-card" *ngFor="let product of products">
+    <h1>{{ product.title }}</h1>
+    <img src="{{ product.thumbnail }}" alt="Image">
+    <p>${{ product.price }}</p>
+    <button class="view-product">VIEW PRODUCT</button>
+  </div>
+</div>

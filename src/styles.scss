@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+/* Import Roboto Font */
+@import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+
+/* Import Material Design Icons */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: rgb(228, 228, 228);
+    overflow-x: hidden !important;
+
+}
+
+body { 
+    min-height: 100vh; /* will cover the 100% of viewport */
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 300px;
+}
