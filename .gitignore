@@ -42,9 +42,9 @@ testem.log
 /typings
 
 # Ignore Flask config and env
-./backend/config.py
-./backend/store-env/*
-
+/backend/config.py
+/backend/store-env/*
+/backend/config.pyc
 # System Files
 .DS_Store
 Thumbs.db
