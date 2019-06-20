@@ -8,12 +8,20 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  user: {};
+  user: {
+    email: String,
+    password: String,
+    confirmPassword: String,
+    firstName: String,
+    lastName: String,
+    username: String
+  };
 
   constructor(private auth: AuthService) { 
     this.user = {
       email: null,
       password: null,
+      confirmPassword: null,
       firstName: null,
       lastName: null,
       username: null
@@ -24,14 +32,23 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    console.log(this.user)
-    /* this.auth.register({
-      email: this.email,
-      password: this.password,
-      firstName: this.firstName,
-      lastName: this.lastName,
-      username: this.username
-    }) */
+    if(this.user.username == null || this.user.password == null || this.user.email==null) {
+      alert('Missing required fields');
+    }
+    else if(this.user.password != this.user.confirmPassword) {
+      alert("Passwords don't match");
+    } else {
+      this.auth.register({
+        email: this.user.email,
+        password: this.user.password,
+        username: this.user.username,
+        firstName: this.user.firstName,
+        lastName: this.user.lastName
+      }).subscribe(
+        (data) => {console.log(data)},
+        (error) => { alert(error) }  
+      )
+    }
   }
 
 }

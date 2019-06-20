@@ -7,7 +7,7 @@ from random import choice
 from uuid import uuid4
 import datetime
 
-@app.route('/register/', methods=["POST"])
+@app.route('/register', methods=["POST"])
 @cross_origin(origin="*",headers=["Content-Type","Authorization"])
 def register():
     try:
@@ -23,9 +23,10 @@ def register():
             last_name = args['lastName']
         else:
             last_name = ''
-            
-        user = User(username=username,email=email,password=password,first_name=first_name,last_name=last_name)
 
+        user = User(username=username,email=email,first_name=first_name,last_name=last_name)
+        user.set_password(password)
+        
         db.session.add(user)
         db.session.commit()
 

@@ -1,15 +1,15 @@
 <div class="register-wrapper">
-  <div class="register-box">
+  <form class="register-box">
     <h1>Tech Base</h1>
-    <input type="text" name="email" placeholder="Email" ([ngModel])="user.email">
-    <input type="text" name="username" placeholder="Username" ([ngModel])="user.username">
-    <input type="password" name="password" placeholder="Password" ([ngModel])="user.password">
-    <input type="password" name="confirmPassword" placeholder="Confirm Password" ([ngModel])="user.confirmPassword">
+    <input type="text" name="email" placeholder="Email" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
+    <input type="text" name="username" placeholder="Username" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}">
+    <input type="password" name="password" placeholder="Password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
+    <input type="password" name="confirmPassword" placeholder="Confirm Password" [(ngModel)]="user.confirmPassword" [ngModelOptions]="{standalone: true}">
     <div class="name">
-      <input type="text" name="firstName" placeholder="First Name" ([ngModel])="user.firstName">
-      <input type="text" name="lastName" placeholder="Last Name" ([ngModel])="user.lastName">
+      <input type="text" name="firstName" placeholder="First Name" [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}">
+      <input type="text" name="lastName" placeholder="Last Name" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}">
     </div>
     <button (click)="register()">Register</button>
     <p>Already have an account? <a routerLink="/account/login">Login</a></p>
-  </div>
+  </form>
 </div>
