@@ -4,13 +4,15 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class AuthService {
 
   constructor(private http: HttpClient) {
 
   }
 
-  getAllProducts() {
-    return this.http.get('http://127.0.0.1:5000/products')
+  register(user) {
+    return this.http.post('http://127.0.0.1:5000/register', user);
   }
+
 }
+

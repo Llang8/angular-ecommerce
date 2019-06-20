@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.state';
+import { Observable } from 'rxjs';
+import { Product } from '../models/product.model';
+import { map } from 'rxjs/operators';
+import * as ProductsActions from '../store/actions/products.actions';
 
 @Component({
   selector: 'app-products',
@@ -7,75 +13,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  allProducts: any
-  products: any
+  allProducts: Product[];
+  products: Product[];
 
-  constructor() {
-    // Temporary Products list until database is set up
-    this.allProducts = [{
-      id: 1,
-      title: 'Gaming Keyboard 1',
-      category: 'Keyboards',
-      thumbnail: 'https://assets.pcmag.com/media/images/484033-corsair-strafe-mechanical-gaming-keyboard.jpg?thumb=y&width=333&height=246',
-      description: 'keyboard has green keys',
-      sales: 7,
-      featured: 4,
-      price: 255
-    },
-    {
-      id: 2,
-      title: 'Gaming Keyboard 2',
-      category: 'Keyboards',
-      thumbnail: 'https://assets.pcmag.com/media/images/484033-corsair-strafe-mechanical-gaming-keyboard.jpg?thumb=y&width=333&height=246',
-      description: 'keyboard has blue keys',
-      sales: 3,
-      featured: 2,
-      price: 100
-    },
-    {
-      id: 3,
-      title: 'Gaming Keyboard 3',
-      category: 'Keyboards',
-      thumbnail: 'https://assets.pcmag.com/media/images/484033-corsair-strafe-mechanical-gaming-keyboard.jpg?thumb=y&width=333&height=246',
-      description: 'keyboard has red keys',
-      sales: 1,
-      featured: 1,
-      price: 144
-    },
-    {
-      id: 4,
-      title: 'Gaming Mouse 1',
-      category: 'Mice',
-      thumbnail: 'https://images-na.ssl-images-amazon.com/images/I/61d9C4yCB2L._SX466_.jpg',
-      description: 'Mouse is blue',
-      sales: 10,
-      featured: 2,
-      price: 100
-    },
-    {
-      id: 5,
-      title: 'Gaming Mouse 2',
-      category: 'Mice',
-      thumbnail: 'https://images-na.ssl-images-amazon.com/images/I/61d9C4yCB2L._SX466_.jpg',
-      description: 'Mouse is red',
-      sales: 25,
-      featured: 5,
-      price: 110
-    },
-    {
-      id: 6,
-      title: 'Gaming Mouse 3',
-      category: 'Mice',
-      thumbnail: 'https://images-na.ssl-images-amazon.com/images/I/61d9C4yCB2L._SX466_.jpg',
-      description: 'Mouse is orange',
-      sales: 20,
-      featured: 3,
-      price: 125
-    }]
-
-    this.products = this.allProducts;
-    document.getElementById
-   }
+  constructor(private store: Store<AppState>) {
+    store.dispatch(new ProductsActions.LoadProducts())
+    store.select('products')
+      .subscribe(data => {
+        console.log(data);
+        if (data['loaded']) {
+          console.log(data);
+          this.allProducts = data['products'];
+          this.products = data['products'];
+        } else {
+          console.log('Not loaded')
+        }
+      })
+  }
 
   ngOnInit() {
   }

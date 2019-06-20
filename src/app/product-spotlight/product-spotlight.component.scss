@@ -1,7 +1,17 @@
 .product-wrapper {
+    width: 100vw;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-box {
     background: white;
-    margin: 0px 20px;
+    margin: 25px 20px;
     border-radius: 5px;
+    max-height: 800px;
+    width: 80%;
 }
 
 .product-top {
@@ -10,9 +20,12 @@
     padding: 0px 50px;
 
     .product-images {
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
         img {
             width: 90%;
+            max-width: 300px;
         }
     }
 
@@ -37,12 +50,14 @@
             display: flex;
             align-items: center;
             margin-bottom: 10px;
+            max-width: 150px;
 
             * {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 cursor: pointer;
+                user-select: none;
             }
         }
 

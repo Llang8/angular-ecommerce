@@ -1,0 +1,16 @@
+<div *ngIf="!loggedIn" class="login-prompt-wrapper">
+  <div class="login-prompt">
+    <h1>You are not logged in</h1>
+    <h2>Please login to see your cart</h2>
+    <button routerLink="/account/login">LOGIN</button>
+  </div>
+</div>
+<div #elseBlock class="cart-wrapper">
+  <div *ngFor="let item of cart | async; let index = index">
+    <img src="{{item.thumbnail}}">
+    <h1>{{ item.title }}</h1>
+    <h2>Price: ${{ item.price }}</h2>
+    <input type="number" name="quantity" (change)="updateQty(index,$event.target.value)" [(ngModel)]="item.quantity" id="">
+    <h2>Total: ${{ item.total }}</h2>
+  </div>
+</div>

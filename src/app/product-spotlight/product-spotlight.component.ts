@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { CartItem } from '../models/cartitem.model';
+import { AppState } from '../app.state';
+import * as CartActions from '../store/actions/cart.actions';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-product-spotlight',
@@ -11,9 +16,9 @@ export class ProductSpotlightComponent implements OnInit {
   // Product id number
   id: number;
   quantity: number = 1;
-  product: {};
+  product: Product;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private store: Store<AppState>) {}
 
   ngOnInit() {
     // Get id route param
@@ -46,5 +51,15 @@ export class ProductSpotlightComponent implements OnInit {
     }
   }
 
+  addToCart() {
+    this.store.dispatch(new CartActions.AddCartItem({
+      id: this.product.id,
+      title: this.product.title,
+      thumbnail: this.product.thumbnail,
+      price: this.product.price,
+      quantity: this.quantity,
+      total: this.product.price * this.quantity
+    }))
+  }
 
 }

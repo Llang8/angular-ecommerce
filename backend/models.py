@@ -1,10 +1,10 @@
-from app import db
+from app import db,ma
 from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime
 from flask_login import UserMixin
 
 class User(db.Model):
-    __tablename__ = 'users'
+    __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(25),unique=True, nullable=False)
     email = db.Column(db.String(100), unique=True,nullable=False)
@@ -15,7 +15,7 @@ class User(db.Model):
 
     # Setup backrefs for one-to-many relationships
     reviews = db.relationship('Review', backref='user', lazy=True)
-    purchases = db.relationship('Purchase', backref='user', lazy=True)
+    # purchases = db.relationship('Purchase', backref='user', lazy=True)
     cart_items = db.relationship('CartItem', backref='user', lazy=True)
 
 
@@ -40,8 +40,8 @@ class Product(db.Model):
     price=db.Column(db.Integer, nullable=False)
 
     # Setup backrefs
-    images = db.relationship('ProductImage', backref='user', lazy=True)
-    reviews = db.relationship('Review', backref='user', lazy=True)
+    images = db.relationship('ProductImage', backref='product', lazy=True)
+    reviews = db.relationship('Review', backref='product', lazy=True)
 
     def __repr__(self):
         return '<Product {}>'.format(self.id)
@@ -49,7 +49,7 @@ class Product(db.Model):
 class Admin(UserMixin, db.Model):
     __tablename__ = 'admin'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     role = db.Column(db.String(100))
 
     
@@ -69,7 +69,7 @@ class UserSession(db.Model):
     __tablename__ = 'user_session'
     id = db.Column(db.Integer, primary_key=True)
     session_id = db.Column(db.String, nullable=False,unique=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     expiration_date = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self):
@@ -97,3 +97,11 @@ class CartItem(db.Model):
 
     def __repr__(self):
         return '<CARTITEM {}>'.format(self.id)
+
+
+class ProductSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'title', 'description', 'thumbnail', 'price', 'sales', 'featured')
+
+product_schema = ProductSchema(strict=True)
+products_schema = ProductSchema(many=True, strict=True)
