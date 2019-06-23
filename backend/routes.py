@@ -64,7 +64,7 @@ def login(email,password):
             user_session = UserSession(session_id=uuid,user_id=user.id,expiration_date=expiration_date)
             db.session.add(user_session)
             db.session.commit()
-            return jsonify(id=user.id,username=user.username,email=user.email,first_name=user.first_name,last_name=user.last_name,create_date=user.create_date, uuid=uuid)
+            return jsonify(id=user.id,username=user.username,email=user.email,first_name=user.first_name,last_name=user.last_name,create_date=user.create_date, token=uuid)
         else:
             return 'Password Incorrect'
 
